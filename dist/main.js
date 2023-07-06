@@ -50,7 +50,7 @@ const getGeoweather= (event)=>{
        if(!navigator.geolocation) geoError();
         navigator.geolocation.getCurrentPosition(geoSuccess,geoError); 
     }
-}
+};
   
 const geoError=(errObj)=>
 {
@@ -88,7 +88,7 @@ const loadweather=(event)=>
         displayHomelocationWeather(savedLocation);
      }
 };
-const displayHomelocationWeather=(home)=>
+ const displayHomelocationWeather=(home)=>
 {
     if(typeof home==="string")
     {
@@ -119,7 +119,8 @@ const savelocation=()=>
         localStorage.setItem("defaultWeatherLocation",JSON.stringify(location));
         updateScreenReaderConfirmation(`Saved ${currentLoc.getName()} as home location`);
     }
-};
+}; 
+
  const setUnitpref=()=>
 {
     const unitButton=document.querySelector(".fa-chart-bar");
@@ -177,9 +178,9 @@ displayError("Connection Error","Connection Error");
 const updateDataandDisplay=async (locationObj)=>
 {     
    const weathercurjson=await getcurWeatherFromCoord(locationObj);
-   // console.log(weathercurjson); 
+   console.log(weathercurjson); 
     const weatherjson=await getWeatherFromCoord(locationObj);
- //  console.log(weatherjson);
+   console.log(weatherjson);
    if(weatherjson) updateDisplay(weathercurjson,locationObj,weatherjson);
 };
 

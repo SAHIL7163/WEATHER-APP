@@ -1,5 +1,5 @@
-//const WEATHER_API_KEY="826dcb4136377ee833301c710e976bf3";
-//const API_KEY="3cc21538ca264cde81fc62b6e78ad6c3";
+const WEATHER_API_KEY="826dcb4136377ee833301c710e976bf3";
+const API_KEY="3cc21538ca264cde81fc62b6e78ad6c3";
 
 export const setLocationObject=(locationObj,coordObj)=>
 {
@@ -15,7 +15,7 @@ export const setLocationObject=(locationObj,coordObj)=>
 
 export const getHomeLocation=()=>
 {
-    return localStorage.getItem("defausltWeatherLocation");
+    return localStorage.getItem("defaultWeatherLocation");
 }
  export const cleanText=(text)=>
 {
