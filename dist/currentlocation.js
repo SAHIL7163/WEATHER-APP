@@ -4,7 +4,7 @@ export default class CurrentLocation{
         this._name="Current Location";
         this._lat=null;
         this._lon=null;
-        this._unit="imperical";
+        this._unit="metric";
     }
     getName(){
         return this._name;
@@ -39,5 +39,8 @@ export default class CurrentLocation{
     }
     toggleUnit(){
         this._unit=this._unit==="imperial"?"metric":"imperial";
+        console.log(this._unit);
+       //this._unit = this._unit === "metric" ? "imperial" : "metric";
+     //  this.setUnit(unit);
     }
 };

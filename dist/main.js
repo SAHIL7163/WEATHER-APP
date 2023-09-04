@@ -127,7 +127,15 @@ const savelocation=()=>
     addSpinner(unitButton);
     currentLoc.toggleUnit();
     updateDataandDisplay(currentLoc);
-};
+}; 
+
+/* const setUnitPref = () => {
+    const unitIcon = document.querySelector(".fa-chart-bar");
+    addSpinner(unitIcon);
+    currentLoc.toggleUnit();
+    updateDataandDisplay(currentLoc);
+  }; */
+
 const refreshweather=()=>
 {
     const refreshIcon=document.querySelector(".fa-sync-alt");
@@ -173,14 +181,15 @@ displayError("Connection Error","Connection Error");
    console.log(weathercurjson);
     if(weatherjson) updateDisplay(weatherjson,locationObj);
   const weatherjson=await getWeatherFromCoord(locationObj);
-} */
+}  */
  
 const updateDataandDisplay=async (locationObj)=>
 {     
    const weathercurjson=await getcurWeatherFromCoord(locationObj);
    console.log(weathercurjson); 
-    const weatherjson=await getWeatherFromCoord(locationObj);
+   const weatherjson=await getWeatherFromCoord(locationObj);
    console.log(weatherjson);
+   //updateDisplay(weathercurjson,locationObj);
    if(weatherjson) updateDisplay(weathercurjson,locationObj,weatherjson);
 };
 

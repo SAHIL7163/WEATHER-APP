@@ -71,7 +71,7 @@ export const updateDisplay = (weatherJson, locationObj,weatherSixJson) => {
   );
   displayCurrentCondition(ccArray);
   //six day forecast
-  displaySixdayforecast(weatherSixJson);
+  displaySixdayforecast(weatherSixJson,locationObj.getUnit());
   setFocusOnSearch();
   fadeDisplay();
 };
@@ -143,24 +143,25 @@ const createCurrentConditionsDivs = (weatherObj, unit) => {
   const temp = createElem(
     "div",
     "temp",
-    `${Math.round(Number(weatherObj.main.temp - 273))}°`
+     (tempUnit==="C") ? `${Math.round(Number(weatherObj.main.temp))}°` : `${Math.round(Number(weatherObj.main.temp))}`
+
   );
   const properDesc = toProperCase(weatherObj.weather[0].description);  
   const desc = createElem("div", "desc", properDesc);
   const feels = createElem(
     "div",
     "feels",
-    `Feels Like ${Math.round(Number(weatherObj.main.feels_like - 273))}°`
+    (tempUnit==="C") ? `Feels Like ${Math.round(Number(weatherObj.main.feels_like))}°`:`Feels Like ${Math.round(Number(weatherObj.main.feels_like))}`
   );
   const maxTemp = createElem(
     "div",
     "maxtemp",
-    `High ${Math.round(Number(weatherObj.main.temp_max - 273))}°`
+    (tempUnit==="C") ? `High ${Math.round(Number(weatherObj.main.temp_max))}°` : `High ${Math.round(Number(weatherObj.main.temp_max))}`
   );
   const minTemp = createElem(
     "div",
     "mintemp",
-    `Low ${Math.round(Number(weatherObj.main.temp_min - 273))}°`
+    (tempUnit==="C") ? `Low ${Math.round(Number(weatherObj.main.temp_min))}°`: `Low ${Math.round(Number(weatherObj.main.temp_min))}`
   );
   const humidity = createElem(
     "div",
@@ -256,21 +257,23 @@ const displayCurrentCondition = (currentconditionArray) => {
   });
 };
 
-const displaySixdayforecast=(weatherSixJson)=>
+const displaySixdayforecast=(weatherSixJson,unit)=>
 {
   for(let i=1;i<=6;i++)
   {
-    const dfArray=createDailyForecastDiv(weatherSixJson.data[i]);
+    const dfArray=createDailyForecastDiv(weatherSixJson.data[i],unit);
     displayDailyforecast(dfArray);
   }  
 };
-const createDailyForecastDiv=(dayWeather)=>
-{
+const createDailyForecastDiv=(dayWeather,unit)=>
+{  
+  const tempUnit = unit === "imperial" ? "F" : "C";
+  const windUnit = unit === "imperial" ? "mph" : "m/s";
   const dayAbbreviationText=getDayAbbreviation(dayWeather.datetime);
   const dayabbreviation=createElem("p","dayabbrevtion",dayAbbreviationText);
   const dayIcon=createDailyforecastIcon(dayWeather.weather.icon,dayWeather.weather.description);
-  const dayHigh=createElem("p","dayhigh",`${Math.round(Number(dayWeather.max_temp))}°`);
-  const dayLow=createElem("p","daylow",`${Math.round(Number(dayWeather.min_temp))}°`);
+  const dayHigh=createElem("p","dayhigh", (tempUnit==="F") ? `${Math.round(Number(dayWeather.max_temp))}`:`${Math.round(Number(dayWeather.max_temp))}°`);
+  const dayLow=createElem("p","daylow",(tempUnit==="F") ?`${Math.round(Number(dayWeather.min_temp))}`: `${Math.round(Number(dayWeather.max_temp))}°`);
   return [dayabbreviation,dayIcon,dayHigh,dayLow];
 };
 const getDayAbbreviation=(date)=>

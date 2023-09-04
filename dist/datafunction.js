@@ -1,5 +1,7 @@
 const WEATHER_API_KEY="826dcb4136377ee833301c710e976bf3";
-const API_KEY="3cc21538ca264cde81fc62b6e78ad6c3";
+//const API_KEY="3cc21538ca264cde81fc62b6e78ad6c3";
+const API_KEY="40142a39aff645719f753e83e7a90d55";
+
 
 export const setLocationObject=(locationObj,coordObj)=>
 {
@@ -47,7 +49,7 @@ export const getCoordsApi=async (entryText,units)=>
     const units=locationObj.getUnit();
 
 
- const url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units} &appid=${WEATHER_API_KEY}`;
+ const url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${WEATHER_API_KEY}`;
     try {
         const weathercurStream = await fetch(url);
         const weathercurJson= await weathercurStream.json();
@@ -58,14 +60,14 @@ export const getCoordsApi=async (entryText,units)=>
     }
 
 };   
- export const  getWeatherFromCoord =async(locationObj)=>
+   export const  getWeatherFromCoord =async(locationObj)=>
 {   
     const lat=locationObj.getLat();
     const lon=locationObj.getLon();
     const units=locationObj.getUnit();
-   // const url=`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
-    //const url=`https:// api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt={cnt}&appid=${WEATHER_API_KEY}`
-   //const url=`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`;
+   //const url=`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&days=7&appid=${WEATHER_API_KEY}`
+    //const url=`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt={cnt}&appid=${WEATHER_API_KEY}`
+// const url=`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&days=7&appid=${WEATHER_API_KEY}`;
     const url=`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&units=${units}&days=7&key=${API_KEY}`
     try {
         const weatherStream = await fetch(url);
@@ -75,4 +77,5 @@ export const getCoordsApi=async (entryText,units)=>
     }catch(err){
        console.log(err);
     }
-};   
+};    
+ 
