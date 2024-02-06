@@ -202,18 +202,17 @@ const createElem = (elemtype, divclassName, divtext, unit) => {
 const translateIcontoFontAwesome = (icon) => {
   const i = document.createElement("i");
   const firstTwoChars = icon.slice(0, 2);
-  const lastchar = icon.slice(2);
+  const lastChar = icon.slice(2);
   switch (firstTwoChars) {
     case "01":
-      if (lastchar == "d") {
+      if (lastChar === "d") {
         i.classList.add("far", "fa-sun");
       } else {
         i.classList.add("far", "fa-moon");
       }
       break;
-
     case "02":
-      if (lastchar == "d") {
+      if (lastChar === "d") {
         i.classList.add("fas", "fa-cloud-sun");
       } else {
         i.classList.add("fas", "fa-cloud-moon");
@@ -229,7 +228,7 @@ const translateIcontoFontAwesome = (icon) => {
       i.classList.add("fas", "fa-cloud-rain");
       break;
     case "10":
-      if (lastchar == "d") {
+      if (lastChar === "d") {
         i.classList.add("fas", "fa-cloud-sun-rain");
       } else {
         i.classList.add("fas", "fa-cloud-moon-rain");
@@ -239,7 +238,7 @@ const translateIcontoFontAwesome = (icon) => {
       i.classList.add("fas", "fa-poo-storm");
       break;
     case "13":
-      i.classList.add("fas", "fa-snowflake");
+      i.classList.add("far", "fa-snowflake");
       break;
     case "50":
       i.classList.add("fas", "fa-smog");
@@ -273,7 +272,7 @@ const createDailyForecastDiv=(dayWeather,unit)=>
   const dayabbreviation=createElem("p","dayabbrevtion",dayAbbreviationText);
   const dayIcon=createDailyforecastIcon(dayWeather.weather.icon,dayWeather.weather.description);
   const dayHigh=createElem("p","dayhigh", (tempUnit==="F") ? `${Math.round(Number(dayWeather.max_temp))}`:`${Math.round(Number(dayWeather.max_temp))}°`);
-  const dayLow=createElem("p","daylow",(tempUnit==="F") ?`${Math.round(Number(dayWeather.min_temp))}`: `${Math.round(Number(dayWeather.max_temp))}°`);
+  const dayLow=createElem("p","daylow",(tempUnit==="F") ?`${Math.round(Number(dayWeather.min_temp))}`: `${Math.round(Number(dayWeather.min_temp))}°`);
   return [dayabbreviation,dayIcon,dayHigh,dayLow];
 };
 const getDayAbbreviation=(date)=>

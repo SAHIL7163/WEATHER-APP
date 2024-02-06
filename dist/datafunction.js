@@ -1,6 +1,7 @@
 const WEATHER_API_KEY="826dcb4136377ee833301c710e976bf3";
-//const API_KEY="3cc21538ca264cde81fc62b6e78ad6c3";
-const API_KEY="40142a39aff645719f753e83e7a90d55";
+const API_KEY="c400304c22844ccf86d3812e0821cd83";
+//const API_KEY="40142a39aff645719f753e83e7a90d55";
+
 
 
 export const setLocationObject=(locationObj,coordObj)=>
