@@ -68,7 +68,7 @@ img{
     background-image: url("./img/night.jpg");
 }
 .fog{
-    background-color: var(--background-color);
+    background-color: var(--fog-color);
     background-image: url("./img/fog.jpg");
 }
 .clouds{
