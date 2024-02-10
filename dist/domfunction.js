@@ -284,6 +284,7 @@ const getDayAbbreviation=(date)=>
 const createDailyforecastIcon=(icon,alttext)=>
 {   icon=icon.slice(1,4);
   //console.log(icon);
+ if(icon === "06d") icon = "04d";
   const img=document.createElement("img");
  if(window.innerWidth<768  || window.innerWidth<102)
   {
