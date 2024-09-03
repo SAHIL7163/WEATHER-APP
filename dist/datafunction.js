@@ -1,6 +1,6 @@
 const WEATHER_API_KEY="826dcb4136377ee833301c710e976bf3";
-const API_KEY="a209c7a283ad45af953edbde90957f0a";
-//const API_KEY="40142a39aff645719f753e83e7a90d55";
+//const API_KEY="a209c7a283ad45af953edbde90957f0a";
+const API_KEY="2621f2c5d06d4b3bad8d77b9086925d1";
 
 
 
@@ -66,9 +66,6 @@ export const getCoordsApi=async (entryText,units)=>
     const lat=locationObj.getLat();
     const lon=locationObj.getLon();
     const units=locationObj.getUnit();
-   //const url=`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&days=7&appid=${WEATHER_API_KEY}`
-    //const url=`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt={cnt}&appid=${WEATHER_API_KEY}`
-// const url=`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&days=7&appid=${WEATHER_API_KEY}`;
     const url=`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&units=${units}&days=7&key=${API_KEY}`
     try {
         const weatherStream = await fetch(url);
